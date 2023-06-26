@@ -1,0 +1,13 @@
+Here is an SQL query to order film genre by average rental duration: 
+
+SELECT 	C.NAME,	
+		AVG(rental_duration) AS avg_rental_duration,
+		SUM(F.amount) AS total_revenue
+FROM film A		
+INNER JOIN film_category B ON A.film_id = B.film_id		
+INNER JOIN category C ON B.category_id = C.category_id		
+INNER JOIN inventory D ON A.film_id = D.film_id		
+INNER JOIN rental E ON D.inventory_id = E.inventory_id		
+INNER JOIN payment F ON E.rental_id = F.rental_id		
+GROUP BY C.name		
+ORDER BY SUM(F.amount) DESC		
