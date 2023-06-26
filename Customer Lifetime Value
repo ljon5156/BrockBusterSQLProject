@@ -1,0 +1,14 @@
+Here is an SQL query to find each customer's lifetime value:
+
+SELECT 	A.customer_id AS customer_ID,	
+		A.first_name AS customer_first_name,
+		A.last_name AS customer_last_name,
+		D.country,
+		SUM(E.amount) AS lifetime_value
+FROM customer A		
+INNER JOIN address B ON A.address_id = B.address_id		
+INNER JOIN city C ON B.city_id = C.city_id		
+INNER JOIN country D ON C.country_id = D.country_id		
+INNER JOIN payment E ON A.customer_id = E.customer_id		
+GROUP BY A.customer_id, first_name, last_name, country		
+ORDER BY SUM(E.amount) DESC		
