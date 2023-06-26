@@ -1,0 +1,11 @@
+Here is an SQL query to find descriptive statistics of the customer table:
+
+SELECT 	MODE() WITHIN GROUP (ORDER BY first_name) AS modal_first_name_value,	
+		MODE() WITHIN GROUP (ORDER BY last_name) AS modal_last_name_value,
+		MODE() WITHIN GROUP (ORDER BY email) AS modal_email_value,
+		MODE() WITHIN GROUP (ORDER BY address_id) AS address_id_value,
+		MODE() WITHIN GROUP (ORDER BY activebool) AS modal_activebool_value,
+		MODE() WITHIN GROUP (ORDER BY create_date) AS modal_create_date_value,
+		MODE() WITHIN GROUP (ORDER BY last_update) AS modal_last_update_value,
+		MODE() WITHIN GROUP (ORDER BY active) AS modal_active_value
+FROM customer		
