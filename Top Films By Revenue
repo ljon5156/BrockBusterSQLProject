@@ -1,0 +1,14 @@
+Here is an SQL query to find top films based on revenue:
+
+SELECT 	A.title AS film_name,	
+		C.name AS category_name,
+		rental_rate,
+		SUM(F.amount) AS total_revenue
+FROM film A		
+INNER JOIN film_category B ON A.film_id = B.film_id		
+INNER JOIN category C ON B.category_id = C.category_id		
+INNER JOIN inventory D ON A.film_id = D.film_id		
+INNER JOIN rental E ON D.inventory_id = E.inventory_id		
+INNER JOIN payment F ON E.rental_id = F.rental_id		
+GROUP BY A.title, C.name, rental_rate		
+ORDER BY SUM(F.amount) DESC		
